@@ -8,7 +8,7 @@
         <authorEmail>midwestmicro@live.com</authorEmail>
         <authorUrl>http://www.brentonklassen.com</authorUrl>
         <!--  The version string is recorded in the components table -->
-        <version>0.0.4</version>
+        <version>0.0.6</version>
         <!-- The description is optional and defaults to the name -->
         <description>A quiz component for the friend finder</description>
  
@@ -27,6 +27,7 @@
                 <filename>quiz.php</filename>
                 <filename>controller.php</filename>
                 <folder>views</folder>
+                <folder>models</folder>
         </files>
  
         <administration>
