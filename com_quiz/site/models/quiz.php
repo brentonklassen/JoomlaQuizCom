@@ -23,7 +23,7 @@ class QuizModelQuiz extends JModelItem
         {
                 if (!isset($this->msg)) 
                 {
-                        $this->msg = 'Hello World from the model!';
+                    $this->msg = 'Hello from the model!';
                 }
                 return $this->msg;
         }
