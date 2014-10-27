@@ -8,10 +8,20 @@
         <authorEmail>midwestmicro@live.com</authorEmail>
         <authorUrl>http://www.brentonklassen.com</authorUrl>
         <!--  The version string is recorded in the components table -->
-        <version>0.0.7</version>
+        <version>0.0.8</version>
         <!-- The description is optional and defaults to the name -->
         <description>A quiz component for the friend finder</description>
- 
+        
+        <install> <!-- Runs on install -->
+                <sql>
+                        <file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
+                </sql>
+        </install>
+        <uninstall> <!-- Runs on uninstall -->
+                <sql>
+                        <file driver="mysql" charset="utf8">sql/uninstall.mysql.utf8.sql</file>
+                </sql>
+        </uninstall>
         <update> <!-- Runs on update; New since J2.5 -->
                 <schemas>
                         <schemapath type="mysql">sql/updates/mysql/</schemapath>
