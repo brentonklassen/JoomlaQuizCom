@@ -10,21 +10,21 @@ jimport('joomla.application.component.modelitem');
  */
 class QuizModelQuiz extends JModelItem
 {
-        /**
-         * @var string msg
-         */
-        protected $msg;
- 
-        /**
-         * Get the message
-         * @return string The message to be displayed to the user
-         */
-        public function getMsg() 
+    /**
+     * @var string msg
+     */
+    protected $msg;
+
+    /**
+     * Get the message
+     * @return string The message to be displayed to the user
+     */
+    public function getMsg() 
+    {
+        if (!isset($this->msg)) 
         {
-                if (!isset($this->msg)) 
-                {
-                    $this->msg = 'Hello from the model!';
-                }
-                return $this->msg;
+            $this->msg = 'Hello from the model!';
         }
+        return $this->msg;
+    }
 }
