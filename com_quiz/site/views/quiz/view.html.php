@@ -24,10 +24,19 @@ class QuizViewQuiz extends JViewLegacy
          *
          * @return  void
          */
+
+        /**
+         * I'm going to reference my model here and make calls to it.
+         * I hope this is the way I'm supposed to do it.
+        */
+
+
         public function display($tpl = null) 
         {
                 // Assign data to the view
-                $this->msg = $this->get('Msg');
+                $model = $this->getModel();
+                $this->msg = $model->getMsg();
+                $this->quizTaken = $model->quizTaken();
  
                 // Check for errors.
                 if (count($errors = $this->get('Errors'))) 

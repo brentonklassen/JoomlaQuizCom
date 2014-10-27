@@ -6,25 +6,23 @@ defined('_JEXEC') or die('Restricted access');
 jimport('joomla.application.component.modelitem');
  
 /**
- * HelloWorld Model
+ * Quiz Model
  */
 class QuizModelQuiz extends JModelItem
 {
-    /**
-     * @var string msg
-     */
     protected $msg;
 
-    /**
-     * Get the message
-     * @return string The message to be displayed to the user
-     */
-    public function getMsg() 
+    public function getMsg()
     {
-        if (!isset($this->msg)) 
-        {
-            $this->msg = 'Hello from the model!';
-        }
-        return $this->msg;
+        $user = JFactory::getUser();
+        return 'Hello there ' . $user->name;
+    }
+
+    public function quizTaken()
+    {
+
+        // todo query db and check if $user->email has taken the quiz
+
+        return True;
     }
 }
