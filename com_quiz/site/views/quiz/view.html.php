@@ -27,7 +27,7 @@ class QuizViewQuiz extends JViewLegacy
         public function display($tpl = null) 
         {
                 // Assign data to the view
-                $this->msg = 'Hello World';
+                $this->msg = 'Hello World from the quiz!';
  
                 // Display the view
                 parent::display($tpl);
