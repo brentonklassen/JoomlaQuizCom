@@ -81,7 +81,7 @@ class QuizModelQuiz extends JModelItem
     function getResults()
     {
         $user = JFactory::getUser();
-        $selectQuery = "select user_id, (q0+q1+q2+q3+q4+q5+q6+q7) as score from (
+        $selectQuery = "select user_id, (q0+q1+q2+q3+q4+q5+q6+q7+q8+q9) as score from (
             select q.user_id,
             case when (select question0 from u6ktq_quiz where user_id=q.user_id)=(select question0 from u6ktq_quiz where user_id=".$user->id.") then 1 else 0 end as q0,
             case when (select question1 from u6ktq_quiz where user_id=q.user_id)=(select question1 from u6ktq_quiz where user_id=".$user->id.") then 1 else 0 end as q1,
