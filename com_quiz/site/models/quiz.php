@@ -10,19 +10,27 @@ jimport('joomla.application.component.modelitem');
  */
 class QuizModelQuiz extends JModelItem
 {
-    protected $msg;
-
-    public function getMsg()
-    {
-        $user = JFactory::getUser();
-        return 'Hello there ' . $user->name;
-    }
-
+    
     public function quizTaken()
     {
 
         // todo query db and check if $user->email has taken the quiz
 
-        return True;
+        return False;
+    }
+
+    public function formCompleted()
+    {
+        $jinput = JFactory::getApplication()->input;
+
+        $ministry = $jinput->get('ministry');
+        $weddingpassage = $jinput->get('weddingpassage');
+
+        return $ministry and $weddingpassage;
+    }
+    
+    public function submitQuiz()
+    {
+        $jinput = JFactory::getApplication()->input;
     }
 }
