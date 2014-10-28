@@ -13,12 +13,33 @@ if (!$user->id): ?>
 
 <h1>You must be logged in to take the quiz</h1>
 
-<?php elseif ($this->quizTaken): ?>
+<?php elseif ($this->formCompleted || $this->quizTaken): ?>
 
-<h1>You already took this quiz.</h1>
+<?php
+// display appropriate header message
+if ($this->formCompleted)
+{
+	echo "<h1>Here are your results!</h1>";
+}
+if ($this->quizTaken)
+{
+	echo "<h1>You already took this quiz.</h1>";
+}
+?>
 
-<?php elseif ($this->formCompleted): ?>
-<h1>Here are your results!</h1>
+<h2>Your top three are...</h2>
+
+<ul>
+<?php
+
+foreach ($this->quizResults as $result)
+{
+	$thisUser = JFactory::getUser($result->user_id);
+	echo "<li>".$thisUser->name." with a score of ".$result->score."</li>";
+}
+
+?>
+</ul>
 
 <?php else: ?>
 

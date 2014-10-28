@@ -13,10 +13,24 @@ class QuizModelQuiz extends JModelItem
 
     public function quizTaken()
     {
+        $user = JFactory::getUser();
 
-        // todo query db and check if $user->email has taken the quiz
-
-        return False;
+        // Get a db connection.
+        $db = JFactory::getDbo();
+         
+        // Create a new query object.
+        $query = $db->getQuery(true);
+         
+        // Prepare select query
+        $query->select('*');
+        $query->from($db->quoteName('#__quiz'));
+        $query->where($db->quoteName('user_id') . ' = '. $user->id);
+         
+        // Reset the query using our newly populated query object.
+        $db->setQuery($query);
+         
+        // Load the results as a list of stdClass objects (see later for more options on retrieving data).
+        return $db->loadObjectList();
     }
 
     public function formCompleted()
@@ -59,5 +73,27 @@ class QuizModelQuiz extends JModelItem
         // submit the insert query
         $db->setQuery($query);
         $db->query();
+    }
+
+    function getResults()
+    {
+        $user = JFactory::getUser();
+        $selectQuery = "select user_id, (q1+q2+q3+q4+q5+q6+q7) as score from (
+            select q.user_id,
+            case when (select question1 from u6ktq_quiz where user_id=q.user_id)=(select question1 from u6ktq_quiz where user_id=".$user->id.") then 1 else 0 end as q1,
+            case when (select question2 from u6ktq_quiz where user_id=q.user_id)=(select question2 from u6ktq_quiz where user_id=".$user->id.") then 1 else 0 end as q2,
+            case when (select question3 from u6ktq_quiz where user_id=q.user_id)=(select question3 from u6ktq_quiz where user_id=".$user->id.") then 1 else 0 end as q3,
+            case when (select question4 from u6ktq_quiz where user_id=q.user_id)=(select question4 from u6ktq_quiz where user_id=".$user->id.") then 1 else 0 end as q4,
+            case when (select question5 from u6ktq_quiz where user_id=q.user_id)=(select question5 from u6ktq_quiz where user_id=".$user->id.") then 1 else 0 end as q5,
+            case when (select question6 from u6ktq_quiz where user_id=q.user_id)=(select question6 from u6ktq_quiz where user_id=".$user->id.") then 1 else 0 end as q6,
+            case when (select question7 from u6ktq_quiz where user_id=q.user_id)=(select question7 from u6ktq_quiz where user_id=".$user->id.") then 1 else 0 end as q7
+
+            from u6ktq_quiz as q
+            where q.user_id != ".$user->id." limit 3
+        ) as scores order by score desc";
+
+        $db = JFactory::getDbo();
+        $db->setQuery($selectQuery);
+        return $db->loadObjectList();
     }
 }
