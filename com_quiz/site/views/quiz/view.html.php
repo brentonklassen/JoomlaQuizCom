@@ -37,6 +37,10 @@ class QuizViewQuiz extends JViewLegacy
                 $model = $this->getModel();
                 $this->quizTaken = $model->quizTaken();
                 $this->formCompleted = $model->formCompleted();
+
+                if($this->formCompleted){
+                        $model->submitQuiz();
+                }
  
                 // Check for errors.
                 if (count($errors = $this->get('Errors'))) 

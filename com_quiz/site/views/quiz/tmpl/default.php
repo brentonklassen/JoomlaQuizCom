@@ -31,32 +31,32 @@ if (!$user->id): ?>
 
 		<label>What is your favorite type of ministry?</label>
 		<label class="radio">
-			<input name='ministry' type="radio" value='pastoral' /> Pastoral
+			<input name='question1' type="radio" value='pastoral' /> Pastoral
 		</label>
 		<label class="radio">
-			<input name='ministry' type="radio" value='childrens' /> Children's ministry
+			<input name='question1' type="radio" value='childrens' /> Children's ministry
 		</label>
 		<label class="radio">
-			<input name='ministry' type="radio" value='missions' /> Mission work
+			<input name='question1' type="radio" value='missions' /> Mission work
 		</label>
 		<label class="radio">
-			<input name='ministry' type="radio" value='none' /> None
+			<input name='question1' type="radio" value='none' /> None
 		</label>
 
 		<br />
 
 		<label>What Scripture passage do you want read at your wedding?</label>
 		<label class="radio">
-			<input name='weddingpassage' type="radio" value='corinthians' /> 1 Corinthians 13
+			<input name='question2' type="radio" value='corinthians' /> 1 Corinthians 13
 		</label>
 		<label class="radio">
-			<input name='weddingpassage' type="radio" value='ecclesiastes' /> Ecclesiastes 4
+			<input name='question2' type="radio" value='ecclesiastes' /> Ecclesiastes 4
 		</label>
 		<label class="radio">
-			<input name='weddingpassage' type="radio" value='songofsolomon' /> Songs of Solomon
+			<input name='question2' type="radio" value='songofsolomon' /> Songs of Solomon
 		</label>
 		<label class="radio">
-			<input name='weddingpassage' type="radio" value='none' /> None
+			<input name='question2' type="radio" value='none' /> None
 		</label>
 
 		<br />
