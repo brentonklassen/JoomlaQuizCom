@@ -8,7 +8,7 @@
         <authorEmail>midwestmicro@live.com</authorEmail>
         <authorUrl>http://www.brentonklassen.com</authorUrl>
         <!--  The version string is recorded in the components table -->
-        <version>0.0.9</version>
+        <version>0.1.0</version>
         <!-- The description is optional and defaults to the name -->
         <description>A quiz component for the friend finder</description>
         

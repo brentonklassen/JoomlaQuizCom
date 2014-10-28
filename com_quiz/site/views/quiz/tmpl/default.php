@@ -7,6 +7,7 @@
 // No direct access to this file
 defined('_JEXEC') or die;
 
+$jinput = JFactory::getApplication()->input;
 $user = JFactory::getUser();
 // Check if user is logged in
 if (!$user->id): ?>
@@ -52,32 +53,32 @@ foreach ($this->quizResults as $result)
 
 		<label>What is your favorite type of ministry?</label>
 		<label class="radio">
-			<input name='question1' type="radio" value='pastoral' /> Pastoral
+			<input name='question0' type="radio" value='a' /> Pastoral
 		</label>
 		<label class="radio">
-			<input name='question1' type="radio" value='childrens' /> Children's ministry
+			<input name='question0' type="radio" value='b' /> Children's ministry
 		</label>
 		<label class="radio">
-			<input name='question1' type="radio" value='missions' /> Mission work
+			<input name='question0' type="radio" value='c' /> Mission work
 		</label>
 		<label class="radio">
-			<input name='question1' type="radio" value='none' /> None
+			<input name='question0' type="radio" value='d' /> None
 		</label>
 
 		<br />
 
 		<label>What Scripture passage do you want read at your wedding?</label>
 		<label class="radio">
-			<input name='question2' type="radio" value='corinthians' /> 1 Corinthians 13
+			<input name='question1' type="radio" value='a' /> 1 Corinthians 13
 		</label>
 		<label class="radio">
-			<input name='question2' type="radio" value='ecclesiastes' /> Ecclesiastes 4
+			<input name='question1' type="radio" value='b' /> Ecclesiastes 4
 		</label>
 		<label class="radio">
-			<input name='question2' type="radio" value='songofsolomon' /> Songs of Solomon
+			<input name='question1' type="radio" value='c' /> Songs of Solomon
 		</label>
 		<label class="radio">
-			<input name='question2' type="radio" value='none' /> None
+			<input name='question1' type="radio" value='d' /> None
 		</label>
 
 		<br />
