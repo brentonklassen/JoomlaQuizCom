@@ -34,6 +34,7 @@ class QuizViewQuiz extends JViewLegacy
         public function display($tpl = null) 
         {
                 // Assign data to the view
+                $user = JFactory::getUser();
                 $model = $this->getModel();
                 $this->quizTaken = $model->quizTaken();
                 $this->formCompleted = $model->formCompleted();
@@ -44,7 +45,7 @@ class QuizViewQuiz extends JViewLegacy
 
                 if($this->formCompleted || $this->quizTaken)
                 {
-                        $this->quizResults = $model->getResults();
+                        $this->quizResults = $model->getResults($user->id);
                 }
  
                 // Check for errors.

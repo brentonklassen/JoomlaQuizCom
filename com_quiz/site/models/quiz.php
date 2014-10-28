@@ -78,28 +78,32 @@ class QuizModelQuiz extends JModelItem
         $db->query();
     }
 
-    function getResults()
+    function getResults($userid)
     {
-        $user = JFactory::getUser();
         $selectQuery = "select user_id, (q0+q1+q2+q3+q4+q5+q6+q7+q8+q9) as score from (
             select q.user_id,
-            case when (select question0 from u6ktq_quiz where user_id=q.user_id)=(select question0 from u6ktq_quiz where user_id=".$user->id.") then 1 else 0 end as q0,
-            case when (select question1 from u6ktq_quiz where user_id=q.user_id)=(select question1 from u6ktq_quiz where user_id=".$user->id.") then 1 else 0 end as q1,
-            case when (select question2 from u6ktq_quiz where user_id=q.user_id)=(select question2 from u6ktq_quiz where user_id=".$user->id.") then 1 else 0 end as q2,
-            case when (select question3 from u6ktq_quiz where user_id=q.user_id)=(select question3 from u6ktq_quiz where user_id=".$user->id.") then 1 else 0 end as q3,
-            case when (select question4 from u6ktq_quiz where user_id=q.user_id)=(select question4 from u6ktq_quiz where user_id=".$user->id.") then 1 else 0 end as q4,
-            case when (select question5 from u6ktq_quiz where user_id=q.user_id)=(select question5 from u6ktq_quiz where user_id=".$user->id.") then 1 else 0 end as q5,
-            case when (select question6 from u6ktq_quiz where user_id=q.user_id)=(select question6 from u6ktq_quiz where user_id=".$user->id.") then 1 else 0 end as q6,
-            case when (select question7 from u6ktq_quiz where user_id=q.user_id)=(select question7 from u6ktq_quiz where user_id=".$user->id.") then 1 else 0 end as q7,
-            case when (select question8 from u6ktq_quiz where user_id=q.user_id)=(select question8 from u6ktq_quiz where user_id=".$user->id.") then 1 else 0 end as q8,
-            case when (select question9 from u6ktq_quiz where user_id=q.user_id)=(select question9 from u6ktq_quiz where user_id=".$user->id.") then 1 else 0 end as q9
+            case when (select question0 from #__quiz where user_id=q.user_id)=(select question0 from #__quiz where user_id=".$userid.") then 1 else 0 end as q0,
+            case when (select question1 from #__quiz where user_id=q.user_id)=(select question1 from #__quiz where user_id=".$userid.") then 1 else 0 end as q1,
+            case when (select question2 from #__quiz where user_id=q.user_id)=(select question2 from #__quiz where user_id=".$userid.") then 1 else 0 end as q2,
+            case when (select question3 from #__quiz where user_id=q.user_id)=(select question3 from #__quiz where user_id=".$userid.") then 1 else 0 end as q3,
+            case when (select question4 from #__quiz where user_id=q.user_id)=(select question4 from #__quiz where user_id=".$userid.") then 1 else 0 end as q4,
+            case when (select question5 from #__quiz where user_id=q.user_id)=(select question5 from #__quiz where user_id=".$userid.") then 1 else 0 end as q5,
+            case when (select question6 from #__quiz where user_id=q.user_id)=(select question6 from #__quiz where user_id=".$userid.") then 1 else 0 end as q6,
+            case when (select question7 from #__quiz where user_id=q.user_id)=(select question7 from #__quiz where user_id=".$userid.") then 1 else 0 end as q7,
+            case when (select question8 from #__quiz where user_id=q.user_id)=(select question8 from #__quiz where user_id=".$userid.") then 1 else 0 end as q8,
+            case when (select question9 from #__quiz where user_id=q.user_id)=(select question9 from #__quiz where user_id=".$userid.") then 1 else 0 end as q9
 
-            from u6ktq_quiz as q
-            where q.user_id != ".$user->id." limit 3
+            from #__quiz as q
+            where q.user_id != ".$userid." limit 3
         ) as scores order by score desc";
 
         $db = JFactory::getDbo();
         $db->setQuery($selectQuery);
         return $db->loadObjectList();
+    }
+
+    function emailUpdates()
+    {
+
     }
 }
