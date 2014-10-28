@@ -108,12 +108,15 @@ class QuizModelQuiz extends JModelItem
         $db = JFactory::getDbo();
         $db->setQuery($selectQuery);
         $quiztakers = $db->loadObjectList();
+        print_r($quiztakers);
 
+        /*
         foreach ($quiztakers as $quiztaker)
         {
             $quizresults = getResults($quiztaker->user_id);
             print_r($quizresults);
             //$thisUser = JFactory::getUser($result->user_id);
         }
+        */
     }
 }
