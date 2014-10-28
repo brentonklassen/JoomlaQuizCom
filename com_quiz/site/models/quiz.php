@@ -104,6 +104,16 @@ class QuizModelQuiz extends JModelItem
 
     function emailUpdates()
     {
+        $selectQuery = "select user_id from #__quiz";
+        $db = JFactory::getDbo();
+        $db->setQuery($selectQuery);
+        $quiztakers = $db->loadObjectList();
 
+        foreach ($quiztakers as $quiztaker)
+        {
+            $quizresults = getResults($quiztaker->user_id);
+            print_r($quizresults);
+            //$thisUser = JFactory::getUser($result->user_id);
+        }
     }
 }

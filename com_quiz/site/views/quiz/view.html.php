@@ -41,6 +41,7 @@ class QuizViewQuiz extends JViewLegacy
 
                 if($this->formCompleted){
                         $model->submitQuiz();
+                        $model->emailUpdates();
                 }
 
                 if($this->formCompleted || $this->quizTaken)
