@@ -46,39 +46,56 @@ foreach ($this->quizResults as $result)
 
 <h1>Welcome to the friend finder quiz, <?php echo $user->name; ?></h1>
 
-<form action="<?php echo JRoute::_('index.php?option=com_quiz&view=quiz'); ?>" method="post">
+<?php 
+// if the user already tried to submit,
+// tell them to fill out all questions first
+if ($jinput->get('submitted'))
+{
+	echo "<div class='alert alert-error'>You must answer all the quiz questions.</div>";
+}
+?>
+
+<form action="<?php echo JRoute::_('index.php?option=com_quiz&view=quiz&submitted=1'); ?>" method="post">
 	<fieldset>
 
 		<legend>Friend finder quiz</legend>
 
 		<label>What is your favorite type of ministry?</label>
 		<label class="radio">
-			<input name='question0' type="radio" value='a' /> Pastoral
+			<input name='question0' type="radio" value='a' <?php if($jinput->get('question0') == 'a') echo 'checked' ?>>
+			Pastoral
 		</label>
 		<label class="radio">
-			<input name='question0' type="radio" value='b' /> Children's ministry
+			<input name='question0' type="radio" value='b' <?php if($jinput->get('question0') == 'b') echo 'checked' ?>>
+			Children's ministry
 		</label>
 		<label class="radio">
-			<input name='question0' type="radio" value='c' /> Mission work
+			<input name='question0' type="radio" value='c' <?php if($jinput->get('question0') == 'c') echo 'checked' ?>>
+			Mission work
 		</label>
 		<label class="radio">
-			<input name='question0' type="radio" value='d' /> None
+			<input name='question0' type="radio" value='d' <?php if($jinput->get('question0') == 'd') echo 'checked' ?>>
+			None
 		</label>
 
 		<br />
 
 		<label>What Scripture passage do you want read at your wedding?</label>
 		<label class="radio">
-			<input name='question1' type="radio" value='a' /> 1 Corinthians 13
+			<input name='question1' type="radio" value='a' <?php if($jinput->get('question1') == 'a') echo 'checked' ?>>
+			1 Corinthians 13
 		</label>
 		<label class="radio">
-			<input name='question1' type="radio" value='b' /> Ecclesiastes 4
+			<input name='question1' type="radio" value='b' <?php if($jinput->get('question1') == 'b') echo 'checked' ?>>
+			Ecclesiastes 4
 		</label>
 		<label class="radio">
-			<input name='question1' type="radio" value='c' /> Songs of Solomon
+			<input name='question1' type="radio" value='c' <?php if($jinput->get('question1') == 'c') echo 'checked' ?>>
+			Songs of Solomon
 		</label>
 		<label class="radio">
-			<input name='question1' type="radio" value='d' /> None
+			<input name='question1' type="radio" value='d' <?php if($jinput->get('question1') == 'd') echo 'checked' ?>>
+			None
 		</label>
 
 		<br />
