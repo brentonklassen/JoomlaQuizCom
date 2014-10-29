@@ -22,12 +22,15 @@ if (!$user->id): ?>
 <ul>
 <?php
 
-foreach ($this->quizResults as $result)
+foreach ($this->topThree as $topThreeUser)
 {
-	$thisUser = JFactory::getUser($result->user_id);
-	echo "<li>".$thisUser->name." with a score of ".$result->score."</li>";
+	$thisUser = JFactory::getUser($topThreeUser->user_id);
+	echo "<li>".$thisUser->name." with a score of ".$topThreeUser->score."</li>";
 }
-
+echo '<br>Fantastic friends:<br>';
+print_r($this->fantasticFriends);
+echo '<br>Others who got me:<br>';
+print_r($this->othersWhoGotMe);
 ?>
 </ul>
 

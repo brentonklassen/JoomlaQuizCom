@@ -40,7 +40,29 @@ class QuizViewQuiz extends JViewLegacy
 
                 if ($this->quizTaken)
                 {
-                        $this->quizResults = $model->getResults($user->id);
+                        $this->topThree = $model->getResults($user->id);
+                        $this->othersWhoGotMe = $model->getOthersWhoGotMe($user->id);
+                        $this->fantasticFriends = array();
+
+                        foreach ($this->othersWhoGotMe as $otherkey => $otherUser)
+                        {
+                                foreach ($this->topThree as $topThreeUser)
+                                {
+                                        // if this other user is also a top three user
+                                        if ($otherUser->user_id == $topThreeUser->user_id)
+                                        {
+                                                // remove them from othersWhoGotMe
+                                                unset($this->othersWhoGotMe[$otherkey]);
+
+                                                // if their score is over 6
+                                                // add them to fantasticFriends
+                                                if ($topThreeUser->score > 6)
+                                                {
+                                                        $this->fantasticFriends[] = $topThreeUser;
+                                                }
+                                        }
+                                }
+                        }
                 }
  
                 // Check for errors.

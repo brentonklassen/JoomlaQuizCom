@@ -34,7 +34,7 @@ class QuizController extends JControllerLegacy
 		}
 
 		$model->submitQuiz();
-		$this->emailUpdates();
+		//$this->emailUpdates();
 		$url = JRoute::_('index.php?option=com_quiz&view=quiz');
 		$app->redirect($url);
 	}

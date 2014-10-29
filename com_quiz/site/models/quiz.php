@@ -63,11 +63,11 @@ class QuizModelQuiz extends JModelItem
         // set up db insert query
         $db = JFactory::getDbo();
         $query = $db->getQuery(true);
-        $columns = array('user_id','question0','question1','question2','question3',
-            'question4','question5','question6','question7','question8','question9');
-        $values = array($db->quote($userid),$db->quote($question0),$db->quote($question1),
-            $db->quote($question2),$db->quote($question3),$db->quote($question4),$db->quote($question5),
-            $db->quote($question6),$db->quote($question7),$db->quote($question8),$db->quote($question9));
+        $columns = array('user_id','question0','question1','question2','question3','question4',
+            'question5','question6','question7','question8','question9','email_updates','date_taken');
+        $values = array($db->quote($userid),$db->quote($question0),$db->quote($question1),$db->quote($question2),
+            $db->quote($question3),$db->quote($question4),$db->quote($question5),$db->quote($question6),
+            $db->quote($question7),$db->quote($question8),$db->quote($question9),true,'now()');
         $query
         ->insert($db->quoteName('#__quiz'))
         ->columns($db->quoteName($columns))
@@ -102,12 +102,29 @@ class QuizModelQuiz extends JModelItem
         return $db->loadObjectList();
     }
 
-    function getAllQuiztakers()
+    function getOthersWhoGotMe($userid)
     {
-        $selectQuery = "select user_id from #__quiz";
         $db = JFactory::getDbo();
+        $selectQuery = "select user_id from #__quiz";
         $db->setQuery($selectQuery);
-        return $db->loadObjectList();
+        $quiztakers = $db->loadObjectList();
+
+        $usersWhoGotMe = array();
+
+        foreach ($quiztakers as $quiztaker)
+        {
+            $results = $this->getResults($quiztaker->user_id);
+
+            foreach ($results as $result){
+                if ($result->user_id == $userid)
+                {
+                    // current user made it into the results, so add to array
+                    $usersWhoGotMe[] = $quiztaker;
+                    continue;
+                }
+            }
+        }
+        return $usersWhoGotMe;
     }
 
     function deleteQuiz($userid)
