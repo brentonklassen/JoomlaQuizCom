@@ -42,6 +42,8 @@ foreach ($this->quizResults as $result)
 ?>
 </ul>
 
+<a class='btn' href="<?php echo JRoute::_('index.php?option=com_quiz&view=quiz&task=retakeQuiz'); ?>">Retake quiz</a>
+
 <?php else: ?>
 
 <h1>Welcome to the friend finder quiz, <?php echo $user->name; ?></h1>
@@ -55,7 +57,7 @@ if ($jinput->get('submitted'))
 }
 ?>
 
-<form action="<?php echo JRoute::_('index.php?option=com_quiz&view=quiz&submitted=1'); ?>" method="post">
+<form action="<?php echo JRoute::_('index.php?option=com_quiz&view=quiz&task=submitQuiz'); ?>" method="post">
 	<fieldset>
 
 		<legend>Friend finder quiz</legend>

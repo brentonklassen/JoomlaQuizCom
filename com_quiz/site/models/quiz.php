@@ -119,4 +119,12 @@ class QuizModelQuiz extends JModelItem
         }
         */
     }
+
+    function deleteQuiz($userid)
+    {
+        $deleteQuery = "delete from #__quiz where user_id=".$userid;
+        $db = JFactory::getDbo();
+        $db->setQuery($deleteQuery);
+        $result = $db->query();
+    }
 }

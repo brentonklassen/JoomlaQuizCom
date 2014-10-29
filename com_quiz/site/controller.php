@@ -17,4 +17,35 @@ jimport('joomla.application.component.controller');
  */
 class QuizController extends JControllerLegacy
 {
+	function submitQuiz()
+	{
+		$app = JFactory::getApplication();
+		$jinput = JFactory::getApplication()->input;
+		$model = $this->getModel();
+
+		for ($i=0; $i<2; $i++) // for each question
+		{
+			if (!$jinput->get("question$i")) // if it is not answered
+			{
+				// redirect back to the quiz
+				$url = JRoute::_('index.php?option=com_quiz&view=quiz&submitted=1');
+				$app->redirect($url);
+			}
+		}
+
+		$model->submitQuiz();
+		$url = JRoute::_('index.php?option=com_quiz&view=quiz');
+		$app->redirect($url);
+	}
+
+	function retakeQuiz()
+	{
+		$app = JFactory::getApplication();
+		$user = JFactory::getUser();
+		$model = $this->getModel();
+
+		$model->deleteQuiz($user->id);
+		$url = JRoute::_('index.php?option=com_quiz&view=quiz');
+		$app->redirect($url);
+	}
 }
