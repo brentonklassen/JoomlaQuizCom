@@ -102,22 +102,12 @@ class QuizModelQuiz extends JModelItem
         return $db->loadObjectList();
     }
 
-    function emailUpdates()
+    function getAllQuiztakers()
     {
         $selectQuery = "select user_id from #__quiz";
         $db = JFactory::getDbo();
         $db->setQuery($selectQuery);
-        $quiztakers = $db->loadObjectList();
-        print_r($quiztakers);
-
-        /*
-        foreach ($quiztakers as $quiztaker)
-        {
-            $quizresults = getResults($quiztaker->user_id);
-            print_r($quizresults);
-            //$thisUser = JFactory::getUser($result->user_id);
-        }
-        */
+        return $db->loadObjectList();
     }
 
     function deleteQuiz($userid)

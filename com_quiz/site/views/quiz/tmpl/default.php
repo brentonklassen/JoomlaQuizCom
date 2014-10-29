@@ -55,19 +55,19 @@ if ($jinput->get('submitted'))
 
 		<label>What is your favorite type of ministry?</label>
 		<label class="radio">
-			<input name='question0' type="radio" value='a' <?php if($jinput->get('question0') == 'a') echo 'checked' ?>>
+			<input name='question0' type="radio" value='a' />
 			Pastoral
 		</label>
 		<label class="radio">
-			<input name='question0' type="radio" value='b' <?php if($jinput->get('question0') == 'b') echo 'checked' ?>>
+			<input name='question0' type="radio" value='b' />
 			Children's ministry
 		</label>
 		<label class="radio">
-			<input name='question0' type="radio" value='c' <?php if($jinput->get('question0') == 'c') echo 'checked' ?>>
+			<input name='question0' type="radio" value='c' />
 			Mission work
 		</label>
 		<label class="radio">
-			<input name='question0' type="radio" value='d' <?php if($jinput->get('question0') == 'd') echo 'checked' ?>>
+			<input name='question0' type="radio" value='d' />
 			None
 		</label>
 
@@ -75,19 +75,19 @@ if ($jinput->get('submitted'))
 
 		<label>What Scripture passage do you want read at your wedding?</label>
 		<label class="radio">
-			<input name='question1' type="radio" value='a' <?php if($jinput->get('question1') == 'a') echo 'checked' ?>>
+			<input name='question1' type="radio" value='a' />
 			1 Corinthians 13
 		</label>
 		<label class="radio">
-			<input name='question1' type="radio" value='b' <?php if($jinput->get('question1') == 'b') echo 'checked' ?>>
+			<input name='question1' type="radio" value='b' />
 			Ecclesiastes 4
 		</label>
 		<label class="radio">
-			<input name='question1' type="radio" value='c' <?php if($jinput->get('question1') == 'c') echo 'checked' ?>>
+			<input name='question1' type="radio" value='c' />
 			Songs of Solomon
 		</label>
 		<label class="radio">
-			<input name='question1' type="radio" value='d' <?php if($jinput->get('question1') == 'd') echo 'checked' ?>>
+			<input name='question1' type="radio" value='d' />
 			None
 		</label>
 

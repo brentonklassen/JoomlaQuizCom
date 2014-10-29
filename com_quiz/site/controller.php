@@ -34,8 +34,9 @@ class QuizController extends JControllerLegacy
 		}
 
 		$model->submitQuiz();
+		$this->emailUpdates();
 		$url = JRoute::_('index.php?option=com_quiz&view=quiz');
-		$app->redirect($url);
+		//$app->redirect($url);
 	}
 
 	function retakeQuiz()
@@ -47,5 +48,32 @@ class QuizController extends JControllerLegacy
 		$model->deleteQuiz($user->id);
 		$url = JRoute::_('index.php?option=com_quiz&view=quiz');
 		$app->redirect($url);
+	}
+
+	function emailUpdates()
+	{
+		$user = JFactory::getUser();
+		$model = $this->getModel();
+		$quiztakers = $model->getAllQuiztakers();
+
+		foreach ($quiztakers as $quiztaker)
+		{
+			if ($user->id == $quiztaker->user_id)
+			{
+				continue; // skip the current user
+			}
+
+			$results = $model->getResults($quiztaker->user_id);
+
+			foreach ($results as $result){
+				if ($result->user_id == $user->id)
+				{
+					// current user made it into the results, so send email
+					$thisuser = JFactory::getUser($quiztaker->user_id);
+					echo 'Here are the new results for '.$thisuser->name;
+					print_r($results);
+				}
+			}
+		}
 	}
 }
