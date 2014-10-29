@@ -59,6 +59,7 @@ class QuizModelQuiz extends JModelItem
         $question7 = $jinput->get('question7');
         $question8 = $jinput->get('question8');
         $question9 = $jinput->get('question9');
+        $emails = $jinput->get('emails');
 
         // set up db insert query
         $db = JFactory::getDbo();
@@ -67,7 +68,7 @@ class QuizModelQuiz extends JModelItem
             'question5','question6','question7','question8','question9','email_updates','date_taken');
         $values = array($db->quote($userid),$db->quote($question0),$db->quote($question1),$db->quote($question2),
             $db->quote($question3),$db->quote($question4),$db->quote($question5),$db->quote($question6),
-            $db->quote($question7),$db->quote($question8),$db->quote($question9),$db->quote('t'),'now()');
+            $db->quote($question7),$db->quote($question8),$db->quote($question9),$db->quote($emails),'now()');
         $query
         ->insert($db->quoteName('#__quiz'))
         ->columns($db->quoteName($columns))

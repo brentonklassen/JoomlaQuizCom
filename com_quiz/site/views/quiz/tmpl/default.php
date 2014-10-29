@@ -128,6 +128,13 @@ if ($jinput->get('submitted'))
 		</label>
 
 		<br />
+
+		<label class="checkbox">
+			<input name='emails' type="checkbox" value='t' />
+			Send me email updates
+		</label>
+
+		<br />
 		
 		<button type="submit" class="btn">See your results!</button>
 
