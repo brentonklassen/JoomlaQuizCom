@@ -11,7 +11,7 @@ $app = JFactory::getApplication();
 $user = JFactory::getUser();
 if (!$user->id)
 {
-	$url = JRoute::_('index.php?option=com_users&view=login');
+	$url = JURI::base().'index.php/login';
 	$app->redirect($url);
 	return;
 }
