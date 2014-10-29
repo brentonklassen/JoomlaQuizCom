@@ -70,8 +70,25 @@ class QuizController extends JControllerLegacy
 				{
 					// current user made it into the results, so send email
 					$thisuser = JFactory::getUser($quiztaker->user_id);
-					echo 'Here are the new results for '.$thisuser->name;
-					print_r($results);
+					$config = JFactory::getConfig();
+					$mailer = JFactory::getMailer();
+					$mailer->setSender(array('friendfinder@calvary.edu','Calvary Friend Finder'));
+					
+					$mailer->addRecipient($thisuser->email);
+					$mailer->setSubject($user->name.' made it into your top three!');
+					
+					$body   = "Your new top three is as follows:\n";
+					foreach ($results as $result)
+					{
+						$thisuser = JFactory::getUser($result->user_id);
+						$body .= "\n".$thisuser->name." with a score of ".$result->score;
+					}
+
+					$mailer->setBody($body);
+					$send = $mailer->Send();
+					if ( $send !== true ) {
+					    echo 'Error sending email: ' . $send->__toString();
+					}
 				}
 			}
 		}
