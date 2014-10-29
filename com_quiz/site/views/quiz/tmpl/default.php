@@ -65,6 +65,9 @@ if ($this->othersWhoGotMe)
 <br />
 
 <a class='btn' href="<?php echo JRoute::_('index.php?option=com_quiz&view=quiz&task=retakeQuiz'); ?>">Retake quiz</a>
+<a class='btn' href="<?php echo JRoute::_('index.php?option=com_quiz&view=quiz&task=toggleEmailUpdates'); ?>">
+	<?php echo ($this->emailUpdatesOn) ? 'Turn off emails' : 'Turn on emails'; ?>
+</a>
 
 <?php else: 
 // quiz has not been taken

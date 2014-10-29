@@ -67,7 +67,7 @@ class QuizModelQuiz extends JModelItem
             'question5','question6','question7','question8','question9','email_updates','date_taken');
         $values = array($db->quote($userid),$db->quote($question0),$db->quote($question1),$db->quote($question2),
             $db->quote($question3),$db->quote($question4),$db->quote($question5),$db->quote($question6),
-            $db->quote($question7),$db->quote($question8),$db->quote($question9),true,'now()');
+            $db->quote($question7),$db->quote($question8),$db->quote($question9),$db->quote('t'),'now()');
         $query
         ->insert($db->quoteName('#__quiz'))
         ->columns($db->quoteName($columns))
@@ -132,6 +132,15 @@ class QuizModelQuiz extends JModelItem
         $deleteQuery = "delete from #__quiz where user_id=".$userid;
         $db = JFactory::getDbo();
         $db->setQuery($deleteQuery);
-        $result = $db->query();
+        $db->query();
+    }
+
+    function emailUpdatesOn($userid)
+    {
+        $selectQuery = "select email_updates from #__quiz where user_id=".$userid;
+        $db = JFactory::getDbo();
+        $db->setQuery($selectQuery);
+        $result = $db->loadObjectList();
+        return $result[0]->email_updates == 't';
     }
 }

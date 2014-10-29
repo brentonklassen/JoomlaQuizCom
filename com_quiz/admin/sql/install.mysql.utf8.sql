@@ -12,7 +12,7 @@ CREATE TABLE `#__quiz` (
   `question7` char(1) NOT NULL,
   `question8` char(1) NOT NULL,
   `question9` char(1) NOT NULL,
-  `email_updates` bit(1) NOT NULL,
+  `email_updates` char(1) NOT NULL,
   `date_taken` date NOT NULL,
    PRIMARY KEY  (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
