@@ -34,7 +34,7 @@ class QuizController extends JControllerLegacy
 		}
 
 		$model->submitQuiz();
-		//$this->emailUpdates();
+		$this->emailUpdates();
 		$url = JRoute::_('index.php?option=com_quiz&view=quiz');
 		$app->redirect($url);
 	}
@@ -62,7 +62,41 @@ class QuizController extends JControllerLegacy
 
 	function emailUpdates()
 	{
+		echo 'Hello from emailer';
+
 		$user = JFactory::getUser();
+		$model = $this->getModel();
+		$othersWhoGotMe = $model->getOthersWhoGotMe($user->id);
+		foreach ($othersWhoGotMe as $otherUser)
+		{
+			$emailUpdatesOn = $model->emailUpdatesOn($otherUser->user_id);
+
+			if ($emailUpdatesOn)
+			{
+				$thisuser = JFactory::getUser($otherUser->user_id);
+				$mailer = JFactory::getMailer();
+				$mailer->setSender(array('friendfinder@calvary.edu','Calvary Friend Finder'));
+				$mailer->addRecipient($thisuser->email);
+				$mailer->setSubject($user->name.' made it into your top three!');
+
+				$results = $model->getResults($thisuser->id);
+				
+				$body   = "Your new top three is as follows:\n";
+				foreach ($results as $result)
+				{
+					$thisuser = JFactory::getUser($result->user_id);
+					$body .= "\n".$thisuser->name." with a score of ".$result->score;
+				}
+
+				$mailer->setBody($body);
+				$send = $mailer->Send();
+				if ( $send !== true ) {
+				    echo 'Error sending email: ' . $send->__toString();
+				}
+			}
+		}
+
+		/*$user = JFactory::getUser();
 		$model = $this->getModel();
 		$quiztakers = $model->getAllQuiztakers();
 
@@ -99,6 +133,6 @@ class QuizController extends JControllerLegacy
 					}
 				}
 			}
-		}
+		}*/
 	}
 }
