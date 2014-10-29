@@ -36,7 +36,7 @@ class QuizController extends JControllerLegacy
 		$model->submitQuiz();
 		$this->emailUpdates();
 		$url = JRoute::_('index.php?option=com_quiz&view=quiz');
-		//$app->redirect($url);
+		$app->redirect($url);
 	}
 
 	function retakeQuiz()
@@ -70,10 +70,8 @@ class QuizController extends JControllerLegacy
 				{
 					// current user made it into the results, so send email
 					$thisuser = JFactory::getUser($quiztaker->user_id);
-					$config = JFactory::getConfig();
 					$mailer = JFactory::getMailer();
 					$mailer->setSender(array('friendfinder@calvary.edu','Calvary Friend Finder'));
-					
 					$mailer->addRecipient($thisuser->email);
 					$mailer->setSubject($user->name.' made it into your top three!');
 					
