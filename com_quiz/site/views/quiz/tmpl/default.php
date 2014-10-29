@@ -14,20 +14,9 @@ if (!$user->id): ?>
 
 <h1>You must be logged in to take the quiz</h1>
 
-<?php elseif ($this->formCompleted || $this->quizTaken): ?>
+<?php elseif ($this->quizTaken): ?>
 
-<?php
-// display appropriate header message
-if ($this->formCompleted)
-{
-	echo "<h1>Here are your results!</h1>";
-}
-if ($this->quizTaken)
-{
-	echo "<h1>You already took this quiz.</h1>";
-}
-?>
-
+<h1>Here are your results!</h1>
 <h2>Your top three are...</h2>
 
 <ul>
@@ -41,6 +30,8 @@ foreach ($this->quizResults as $result)
 
 ?>
 </ul>
+
+<br />
 
 <a class='btn' href="<?php echo JRoute::_('index.php?option=com_quiz&view=quiz&task=retakeQuiz'); ?>">Retake quiz</a>
 

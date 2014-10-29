@@ -37,14 +37,8 @@ class QuizViewQuiz extends JViewLegacy
                 $user = JFactory::getUser();
                 $model = $this->getModel();
                 $this->quizTaken = $model->quizTaken();
-                $this->formCompleted = $model->formCompleted();
 
-                if($this->formCompleted){
-                        $model->submitQuiz();
-                        $model->emailUpdates();
-                }
-
-                if($this->formCompleted || $this->quizTaken)
+                if ($this->quizTaken)
                 {
                         $this->quizResults = $model->getResults($user->id);
                 }
