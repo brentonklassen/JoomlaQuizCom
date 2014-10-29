@@ -62,8 +62,6 @@ class QuizController extends JControllerLegacy
 
 	function emailUpdates()
 	{
-		echo 'Hello from emailer';
-
 		$user = JFactory::getUser();
 		$model = $this->getModel();
 		$othersWhoGotMe = $model->getOthersWhoGotMe($user->id);
@@ -95,44 +93,5 @@ class QuizController extends JControllerLegacy
 				}
 			}
 		}
-
-		/*$user = JFactory::getUser();
-		$model = $this->getModel();
-		$quiztakers = $model->getAllQuiztakers();
-
-		foreach ($quiztakers as $quiztaker)
-		{
-			if ($user->id == $quiztaker->user_id)
-			{
-				continue; // skip the current user
-			}
-
-			$results = $model->getResults($quiztaker->user_id);
-
-			foreach ($results as $result){
-				if ($result->user_id == $user->id)
-				{
-					// current user made it into the results, so send email
-					$thisuser = JFactory::getUser($quiztaker->user_id);
-					$mailer = JFactory::getMailer();
-					$mailer->setSender(array('friendfinder@calvary.edu','Calvary Friend Finder'));
-					$mailer->addRecipient($thisuser->email);
-					$mailer->setSubject($user->name.' made it into your top three!');
-					
-					$body   = "Your new top three is as follows:\n";
-					foreach ($results as $result)
-					{
-						$thisuser = JFactory::getUser($result->user_id);
-						$body .= "\n".$thisuser->name." with a score of ".$result->score;
-					}
-
-					$mailer->setBody($body);
-					$send = $mailer->Send();
-					if ( $send !== true ) {
-					    echo 'Error sending email: ' . $send->__toString();
-					}
-				}
-			}
-		}*/
 	}
 }
