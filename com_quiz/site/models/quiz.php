@@ -137,10 +137,23 @@ class QuizModelQuiz extends JModelItem
 
     function emailUpdatesOn($userid)
     {
-        $selectQuery = "select email_updates from #__quiz where user_id=".$userid;
         $db = JFactory::getDbo();
+        $selectQuery = "select email_updates from #__quiz where user_id=".$userid;
         $db->setQuery($selectQuery);
         $result = $db->loadObjectList();
         return $result[0]->email_updates == 't';
+    }
+
+    function toggleEmailUpdates($userid)
+    {
+        $db = JFactory::getDbo();
+        $selectQuery = "select email_updates from #__quiz where user_id=".$userid;
+        $db->setQuery($selectQuery);
+        $result = $db->loadObjectList();
+        $newEmailSetting = ($result[0]->email_updates == 't' ? 'f' : 't');
+
+        $updateQuery = "update #__quiz set email_updates=".$db->quote($newEmailSetting)." where user_id=".$userid;
+        $db->setQuery($updateQuery);
+        $db->query();
     }
 }

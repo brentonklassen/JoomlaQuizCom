@@ -50,6 +50,16 @@ class QuizController extends JControllerLegacy
 		$app->redirect($url);
 	}
 
+	function toggleEmailUpdates()
+	{
+		$app = JFactory::getApplication();
+		$user = JFactory::getUser();
+		$model = $this->getModel();
+		$model->toggleEmailUpdates($user->id);
+		$url = JRoute::_('index.php?option=com_quiz&view=quiz');
+		$app->redirect($url);
+	}
+
 	function emailUpdates()
 	{
 		$user = JFactory::getUser();
