@@ -20,7 +20,7 @@ class QuizController extends JControllerLegacy
 	function submitQuiz()
 	{
 		$app = JFactory::getApplication();
-		$jinput = JFactory::getApplication()->input;
+		$jinput = $app->input;
 		$model = $this->getModel();
 
 		for ($i=0; $i<2; $i++) // for each question

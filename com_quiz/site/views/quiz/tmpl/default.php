@@ -9,36 +9,66 @@ defined('_JEXEC') or die;
 
 $jinput = JFactory::getApplication()->input;
 $user = JFactory::getUser();
-// Check if user is logged in
-if (!$user->id): ?>
+$document = JFactory::getDocument();
 
-<h1>You must be logged in to take the quiz</h1>
+// Add styles
+$style = 'ul.results {'
+        . 'font-size: 16px;'
+        . '}'; 
+$document->addStyleDeclaration($style);
 
-<?php elseif ($this->quizTaken): ?>
+if ($this->quizTaken): ?>
 
 <h1>Here are your results!</h1>
-<h2>Your top three are...</h2>
 
-<ul>
 <?php
 
-foreach ($this->topThree as $topThreeUser)
+echo "<h2>Your top three are...</h2>";
+echo "<ul class='results'>";
+
+foreach ($this->topThreeResults as $topThreeUser)
 {
 	$thisUser = JFactory::getUser($topThreeUser->user_id);
 	echo "<li>".$thisUser->name." with a score of ".$topThreeUser->score."</li>";
 }
-echo '<br>Fantastic friends:<br>';
-print_r($this->fantasticFriends);
-echo '<br>Others who got me:<br>';
-print_r($this->othersWhoGotMe);
+
+echo "</ul>";
+
+if ($this->fantasticFriends)
+{
+	echo "<h2>Fantastic Friends</h2>";
+	echo "<p>These are friends in your top 3 and you are in their top 3 and your score is 7 or higher</p>";
+	echo "<ul class='results'>";
+	foreach ($this->fantasticFriends as $friend)
+	{
+		$thisUser = JFactory::getUser($friend->user_id);
+		echo "<li>".$thisUser->name."</li>";
+	}
+	echo "</ul>";
+}
+
+if ($this->othersWhoGotMe)
+{
+	echo "<h2>Others who got me</h2>";
+	echo "<p>These are people that have you in their top 3</p>";
+	echo "<ul class='results'>";
+	foreach ($this->othersWhoGotMe as $other)
+	{
+		$thisUser = JFactory::getUser($other->user_id);
+		echo "<li>".$thisUser->name."</li>";
+	}
+	echo "</ul>";
+}
+
 ?>
-</ul>
 
 <br />
 
 <a class='btn' href="<?php echo JRoute::_('index.php?option=com_quiz&view=quiz&task=retakeQuiz'); ?>">Retake quiz</a>
 
-<?php else: ?>
+<?php else: 
+// quiz has not been taken
+?>
 
 <h1>Welcome to the friend finder quiz, <?php echo $user->name; ?></h1>
 
