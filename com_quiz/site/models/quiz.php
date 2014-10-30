@@ -95,8 +95,7 @@ class QuizModelQuiz extends JModelItem
             case when (select question9 from #__quiz where user_id=q.user_id)=(select question9 from #__quiz where user_id=".$userid.") then 1 else 0 end as q9
 
             from #__quiz as q
-            where q.user_id != ".$userid." limit 3
-        ) as scores order by score desc";
+            where q.user_id != ".$userid.") as scores order by score desc limit 3";
 
         $db = JFactory::getDbo();
         $db->setQuery($selectQuery);
