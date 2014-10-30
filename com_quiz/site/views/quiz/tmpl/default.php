@@ -37,7 +37,9 @@ echo "</ul>";
 if ($this->fantasticFriends)
 {
 	echo "<h2>Fantastic Friends</h2>";
-	echo "<p>These are friends in your top 3 and you are in their top 3 and your score is 7 or higher</p>";
+	echo "<p>If someone is in your top 3, 
+	and you are in their top 3, and their score is higher than 7, 
+	you guys are fantastic frends!</p>";
 	echo "<ul class='results'>";
 	foreach ($this->fantasticFriends as $friend)
 	{
@@ -49,8 +51,8 @@ if ($this->fantasticFriends)
 
 if ($this->othersWhoGotMe)
 {
-	echo "<h2>Others who got me</h2>";
-	echo "<p>These are people that have you in their top 3</p>";
+	echo "<h2>Others who got you in their top 3</h2>";
+	echo "<p>You are in these people's top 3.</p>";
 	echo "<ul class='results'>";
 	foreach ($this->othersWhoGotMe as $other)
 	{
@@ -89,42 +91,202 @@ if ($jinput->get('submitted'))
 
 		<legend>Friend finder quiz</legend>
 
-		<label>What is your favorite type of ministry?</label>
+		<label>What is the best time of day?</label>
 		<label class="radio">
 			<input name='question0' type="radio" value='a' />
-			Pastoral
+			I am a morning person
 		</label>
 		<label class="radio">
 			<input name='question0' type="radio" value='b' />
-			Children's ministry
+			Afternoons
 		</label>
 		<label class="radio">
 			<input name='question0' type="radio" value='c' />
-			Mission work
+			I am a night owl
 		</label>
 		<label class="radio">
 			<input name='question0' type="radio" value='d' />
-			None
+			Dinner time
 		</label>
 
 		<br />
 
-		<label>What Scripture passage do you want read at your wedding?</label>
+		<label>Who makes the best tech?</label>
 		<label class="radio">
 			<input name='question1' type="radio" value='a' />
-			1 Corinthians 13
+			Apple
 		</label>
 		<label class="radio">
 			<input name='question1' type="radio" value='b' />
-			Ecclesiastes 4
+			Microsoft
 		</label>
 		<label class="radio">
 			<input name='question1' type="radio" value='c' />
-			Songs of Solomon
+			Google
 		</label>
 		<label class="radio">
 			<input name='question1' type="radio" value='d' />
-			None
+			I hate computers
+		</label>
+
+		<br />
+
+		<label>What is your favorite color?</label>
+		<label class="radio">
+			<input name='question2' type="radio" value='a' />
+			Red
+		</label>
+		<label class="radio">
+			<input name='question2' type="radio" value='b' />
+			Yello
+		</label>
+		<label class="radio">
+			<input name='question2' type="radio" value='c' />
+			Blue
+		</label>
+		<label class="radio">
+			<input name='question2' type="radio" value='d' />
+			Other
+		</label>
+
+		<br />
+
+		<label>What type of food is best?</label>
+		<label class="radio">
+			<input name='question3' type="radio" value='a' />
+			Italian
+		</label>
+		<label class="radio">
+			<input name='question3' type="radio" value='b' />
+			Mexican
+		</label>
+		<label class="radio">
+			<input name='question3' type="radio" value='c' />
+			Greek
+		</label>
+		<label class="radio">
+			<input name='question3' type="radio" value='d' />
+			American
+		</label>
+
+		<br />
+
+		<label>Do you prefer DC or Marvel?</label>
+		<label class="radio">
+			<input name='question4' type="radio" value='a' />
+			DC
+		</label>
+		<label class="radio">
+			<input name='question4' type="radio" value='b' />
+			Marvel
+		</label>
+		<label class="radio">
+			<input name='question4' type="radio" value='c' />
+			Both
+		</label>
+		<label class="radio">
+			<input name='question4' type="radio" value='d' />
+			Don't care
+		</label>
+
+		<br />
+
+		<label>Which state is the best?</label>
+		<label class="radio">
+			<input name='question5' type="radio" value='a' />
+			Nebraska
+		</label>
+		<label class="radio">
+			<input name='question5' type="radio" value='b' />
+			Kansas
+		</label>
+		<label class="radio">
+			<input name='question5' type="radio" value='c' />
+			Missouri
+		</label>
+		<label class="radio">
+			<input name='question5' type="radio" value='d' />
+			Montana
+		</label>
+
+		<br />
+
+		<label>What genre of music?</label>
+		<label class="radio">
+			<input name='question6' type="radio" value='a' />
+			Pop
+		</label>
+		<label class="radio">
+			<input name='question6' type="radio" value='b' />
+			Country
+		</label>
+		<label class="radio">
+			<input name='question6' type="radio" value='c' />
+			Rap
+		</label>
+		<label class="radio">
+			<input name='question6' type="radio" value='d' />
+			Classical
+		</label>
+
+		<br />
+
+		<label>What sport is most fun to watch?</label>
+		<label class="radio">
+			<input name='question7' type="radio" value='a' />
+			Basketball
+		</label>
+		<label class="radio">
+			<input name='question7' type="radio" value='b' />
+			Baseball
+		</label>
+		<label class="radio">
+			<input name='question7' type="radio" value='c' />
+			Football
+		</label>
+		<label class="radio">
+			<input name='question7' type="radio" value='d' />
+			Soccer
+		</label>
+
+		<br />
+
+		<label>What is the correct term?</label>
+		<label class="radio">
+			<input name='question8' type="radio" value='a' />
+			Soda
+		</label>
+		<label class="radio">
+			<input name='question8' type="radio" value='b' />
+			Pop
+		</label>
+		<label class="radio">
+			<input name='question8' type="radio" value='c' />
+			Coke
+		</label>
+		<label class="radio">
+			<input name='question8' type="radio" value='d' />
+			Soft drink
+		</label>
+
+		<br />
+
+		<label>What character quality do you value most?</label>
+		<label class="radio">
+			<input name='question9' type="radio" value='a' />
+			Loyalty
+		</label>
+		<label class="radio">
+			<input name='question9' type="radio" value='b' />
+			Honesty
+		</label>
+		<label class="radio">
+			<input name='question9' type="radio" value='c' />
+			Trustworthiness
+		</label>
+		<label class="radio">
+			<input name='question9' type="radio" value='d' />
+			Patience
 		</label>
 
 		<br />

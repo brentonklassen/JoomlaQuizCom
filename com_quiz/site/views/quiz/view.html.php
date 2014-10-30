@@ -57,7 +57,7 @@ class QuizViewQuiz extends JViewLegacy
 
                                                 // if their score is over 6
                                                 // add them to fantasticFriends
-                                                if ($topThreeUser->score > 6)
+                                                if ($topThreeUser->score > 7)
                                                 {
                                                         $this->fantasticFriends[] = $topThreeUser;
                                                 }

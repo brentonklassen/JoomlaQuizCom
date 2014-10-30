@@ -23,7 +23,7 @@ class QuizController extends JControllerLegacy
 		$jinput = $app->input;
 		$model = $this->getModel();
 
-		for ($i=0; $i<2; $i++) // for each question
+		for ($i=0; $i<10; $i++) // for each question
 		{
 			if (!$jinput->get("question$i")) // if it is not answered
 			{
