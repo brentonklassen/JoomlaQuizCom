@@ -138,7 +138,7 @@ if ($jinput->get('submitted'))
 		</label>
 		<label class="radio">
 			<input name='question2' type="radio" value='b' />
-			Yello
+			Yellow
 		</label>
 		<label class="radio">
 			<input name='question2' type="radio" value='c' />
@@ -293,7 +293,7 @@ if ($jinput->get('submitted'))
 
 		<label class="checkbox">
 			<input name='emails' type="checkbox" value='t' />
-			Send me email updates
+			Send me an email when my top 3 changes.
 		</label>
 
 		<br />
