@@ -19,9 +19,32 @@ $document->addStyleDeclaration($style);
 
 if ($this->quizTaken): ?>
 
-<h1>Here are your results!</h1>
+<div class="page-header">
+	<h2 itemprop="name">Here are your results!</h2>
+</div>
 
 <?php
+
+echo "<p>Based on the ".$this->quizzesTaken." quizzes that have been taken, 
+the friend finder recommends that you get to know these people.";
+
+echo "<h2>You'd be fantastic friends!</h2>";
+echo "<p>You were recommended for eachother and the recommendation was over 7.</p>";
+echo "<ul class='results'>";
+
+if ($this->fantasticFriends)
+{
+	foreach ($this->fantasticFriends as $friend)
+	{
+		$thisUser = JFactory::getUser($friend->user_id);
+		echo "<li>".$thisUser->name."</li>";
+	}
+}
+else
+{
+	echo "<li>No one here yet. Retake the quiz or check back later to find fantastic friends!</li>";
+}
+echo "</ul>";
 
 echo "<h2>Your top three are...</h2>";
 echo "<ul class='results'>";
@@ -29,38 +52,26 @@ echo "<ul class='results'>";
 foreach ($this->topThreeResults as $topThreeUser)
 {
 	$thisUser = JFactory::getUser($topThreeUser->user_id);
-	echo "<li>".$thisUser->name." with a score of ".$topThreeUser->score."</li>";
+	echo "<li>".$thisUser->name." with a recommendation of ".$topThreeUser->score."</li>";
 }
-
 echo "</ul>";
 
-if ($this->fantasticFriends)
-{
-	echo "<h2>Fantastic Friends</h2>";
-	echo "<p>If someone is in your top 3, 
-	and you are in their top 3, and their score is higher than 7, 
-	you guys are fantastic frends!</p>";
-	echo "<ul class='results'>";
-	foreach ($this->fantasticFriends as $friend)
-	{
-		$thisUser = JFactory::getUser($friend->user_id);
-		echo "<li>".$thisUser->name."</li>";
-	}
-	echo "</ul>";
-}
-
+echo "<h2>These people should get to know you.</h2>";
+echo "<p>The friend finder recommended to these people that they get to know you.</p>";
+echo "<ul class='results'>";
 if ($this->othersWhoGotMe)
 {
-	echo "<h2>Others who got you in their top 3</h2>";
-	echo "<p>You are in these people's top 3.</p>";
-	echo "<ul class='results'>";
 	foreach ($this->othersWhoGotMe as $other)
 	{
 		$thisUser = JFactory::getUser($other->user_id);
 		echo "<li>".$thisUser->name."</li>";
 	}
-	echo "</ul>";
 }
+else
+{
+	echo "<li>No one here yet. Retake the quiz or check back later to recommend yourself to others!</li>";
+}
+echo "</ul>";
 
 ?>
 

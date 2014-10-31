@@ -156,4 +156,13 @@ class QuizModelQuiz extends JModelItem
         $db->setQuery($updateQuery);
         $db->query();
     }
+
+    function getQuizzesTaken()
+    {
+        $db = JFactory::getDbo();
+        $selectQuery = "select count(*) as quizzesTaken from #__quiz";
+        $db->setQuery($selectQuery);
+        $result = $db->loadObjectList();
+        return $result[0]->quizzesTaken;
+    }
 }

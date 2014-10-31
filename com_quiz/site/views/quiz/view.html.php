@@ -17,20 +17,6 @@ jimport('joomla.application.component.view');
 */
 class QuizViewQuiz extends JViewLegacy
 {
-        /**
-         * Display the Quiz view
-         *
-         * @param   string  $tpl  The name of the template file to parse; automatically searches through the template paths.
-         *
-         * @return  void
-         */
-
-        /**
-         * I'm going to reference my model here and make calls to it.
-         * I hope this is the way I'm supposed to do it.
-        */
-
-
         public function display($tpl = null) 
         {
                 // Assign data to the view
@@ -44,6 +30,7 @@ class QuizViewQuiz extends JViewLegacy
                         $this->topThreeResults = $model->getResults($user->id);
                         $this->othersWhoGotMe = $model->getOthersWhoGotMe($user->id);
                         $this->fantasticFriends = array();
+                        $this->quizzesTaken = $model->getQuizzesTaken();
 
                         foreach ($this->othersWhoGotMe as $otherkey => $otherUser)
                         {
@@ -52,9 +39,6 @@ class QuizViewQuiz extends JViewLegacy
                                         // if this other user is also a top three user
                                         if ($otherUser->user_id == $topThreeUser->user_id)
                                         {
-                                                // remove them from othersWhoGotMe
-                                                unset($this->othersWhoGotMe[$otherkey]);
-
                                                 // if their score is over 6
                                                 // add them to fantasticFriends
                                                 if ($topThreeUser->score > 7)
