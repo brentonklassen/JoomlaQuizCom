@@ -85,6 +85,8 @@ class QuizController extends JControllerLegacy
 					$thisuser = JFactory::getUser($result->user_id);
 					$body .= "\n".$thisuser->name." with a score of ".$result->score;
 				}
+				$body .= "\n\nCheck CalvaryFriends.net to see if you have any fantastic friends 
+				and to see who the friend finder recommended should get to know you.";
 
 				$mailer->setBody($body);
 				$send = $mailer->Send();

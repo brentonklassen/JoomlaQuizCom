@@ -29,7 +29,7 @@ echo "<p>Based on the ".$this->quizzesTaken." quizzes that have been taken,
 the friend finder recommends that you get to know these people.";
 
 echo "<h2>You'd be fantastic friends!</h2>";
-echo "<p>You were recommended for eachother and the recommendation was over 7.</p>";
+echo "<p>You were recommended for each other and the recommendation was over 7.</p>";
 echo "<ul class='results'>";
 
 if ($this->fantasticFriends)
@@ -46,7 +46,7 @@ else
 }
 echo "</ul>";
 
-echo "<h2>Your top three are...</h2>";
+echo "<h2>Your top three recommendations are...</h2>";
 echo "<ul class='results'>";
 
 foreach ($this->topThreeResults as $topThreeUser)
@@ -57,7 +57,7 @@ foreach ($this->topThreeResults as $topThreeUser)
 echo "</ul>";
 
 echo "<h2>These people should get to know you.</h2>";
-echo "<p>The friend finder recommended to these people that they get to know you.</p>";
+echo "<p>The friend finder recommended to these people that they should get to know you.</p>";
 echo "<ul class='results'>";
 if ($this->othersWhoGotMe)
 {
